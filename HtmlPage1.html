@@ -57,8 +57,9 @@
                 position: "top-right"
             });
 
-            const flayer = new FeatureLayer({
-                url: "https://www.geosceneonline.cn/server/rest/services/Hosted/%E5%8D%97%E5%AE%81%E5%87%BA%E8%A1%8C/FeatureServer/layers"
+           const flayer = new FeatureLayer({
+                url: "https://www.geosceneonline.cn/server/rest/services/Hosted/%E5%8D%97%E5%AE%81%E5%87%BA%E8%A1%8C/FeatureServer/layers",
+                 title: "出行方式"
             });
             map.layers.add(flayer);
 
