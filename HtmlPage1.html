@@ -1,4 +1,4 @@
-﻿<html>
+<html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport"
@@ -57,7 +57,7 @@
                 position: "top-right"
             });
 
-           const flayer = new FeatureLayer({
+            const flayer = new FeatureLayer({
                 url: "https://www.geosceneonline.cn/server/rest/services/Hosted/%E5%8D%97%E5%AE%81%E5%87%BA%E8%A1%8C/FeatureServer/layers",
                  title: "出行方式"
             });
@@ -90,10 +90,10 @@
             });
             
             const layerList = new LayerList({
-  view: view1
+  view: view
 });
 // Adds widget below other elements in the top left corner of the view
-view1.ui.add(layerList, {
+view.ui.add(layerList, {
   position: "top-left"
 });
         });
@@ -105,7 +105,3 @@ view1.ui.add(layerList, {
     <div class="yemei">南宁出行</div>
 </body>
 </html>
-
-
-
-
