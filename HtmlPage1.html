@@ -36,7 +36,9 @@
     <script src="https://js.arcgis.com/4.23/"></script>
 
     <script>
-        require(["esri/Map", "esri/views/MapView", "esri/widgets/BasemapGallery", "esri/layers/FeatureLayer", "esri/widgets/Legend", "esri/widgets/ScaleBar", "esri/widgets/Search"], (Map, MapView, BasemapGallery, FeatureLayer, Legend, ScaleBar, Search) => {
+        require(["esri/Map", "esri/views/MapView", "esri/widgets/BasemapGallery", "esri/layers/FeatureLayer", 
+        "esri/widgets/Legend", "esri/widgets/ScaleBar", "esri/widgets/Search","esri/widgets/LayerList"], (Map, MapView, BasemapGallery, FeatureLayer, 
+                                                                                                          Legend, ScaleBar, Search,LayerList) => {
             const map = new Map({
                 basemap: "topo-vector"
             });
@@ -85,6 +87,14 @@
                 position: "top-left",
                 index: 2
             });
+            
+            const layerList = new LayerList({
+  view: view1
+});
+// Adds widget below other elements in the top left corner of the view
+view1.ui.add(layerList, {
+  position: "top-left"
+});
         });
     </script>
 </head>
