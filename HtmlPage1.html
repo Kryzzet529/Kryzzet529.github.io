@@ -1,0 +1,100 @@
+﻿<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport"
+          content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>
+        Intro to MapView - Create a 2D map | Sample | ArcGIS API for JavaScript
+        4.23
+    </title>
+    <style>
+        html,
+        body,
+        #viewDiv {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+            width: 100%;
+        }
+
+        body {
+            position: relative;
+        }
+
+        .yemei {
+            height: 70px;
+            width: 100%;
+            background-color: rgb(255,192,203,0.8);
+            font-size: 60px;
+            color: white;
+            padding-left: 50px;
+        }
+    </style>
+
+    <link rel="stylesheet"
+          href="https://js.arcgis.com/4.23/esri/themes/light/main.css" />
+    <script src="https://js.arcgis.com/4.23/"></script>
+
+    <script>
+        require(["esri/Map", "esri/views/MapView", "esri/widgets/BasemapGallery", "esri/layers/FeatureLayer", "esri/widgets/Legend", "esri/widgets/ScaleBar", "esri/widgets/Search"], (Map, MapView, BasemapGallery, FeatureLayer, Legend, ScaleBar, Search) => {
+            const map = new Map({
+                basemap: "topo-vector"
+            });
+
+            const view = new MapView({
+                container: "viewDiv",
+                map: map,
+                zoom: 6,
+                center: [109, 21] // longitude, latitude
+            });
+
+            const basemapGallery = new BasemapGallery({
+                view: view
+            });
+            view.ui.add(basemapGallery, {
+                position: "top-right"
+            });
+
+            const flayer = new FeatureLayer({
+                url: "https://www.geosceneonline.cn/server/rest/services/Hosted/%E5%8D%97%E5%AE%81%E5%87%BA%E8%A1%8C/FeatureServer/layers"
+            });
+            map.layers.add(flayer);
+
+            const legend = new Legend({
+                view: view,
+                layerInfos: [{
+                    layer: flayer,
+                    title: "出行方式"
+                }]
+            });
+            view.ui.add(legend, "bottom-right");
+
+            const scaleBar = new ScaleBar({
+                view: view,
+                style: "ruler",
+                unit: "metric"
+            });
+            view.ui.add(scaleBar, {
+                position: "bottom-left"
+            });
+
+            const searchWidget = new Search({
+                view: view
+            });
+            view.ui.add(searchWidget, {
+                position: "top-left",
+                index: 2
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div id="viewDiv"></div>
+    <div class="yemei">南宁出行</div>
+</body>
+</html>
+
+
+
+
